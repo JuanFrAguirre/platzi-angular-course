@@ -1,18 +1,23 @@
 <h2>Ingrese su nombre</h2>
+
+
 <br />
 <input type="text" [(ngModel)]="nombre" placeholder="Su nombre..." />
 <br />
 <br />
 <input type="text" [(ngModel)]="apellido" placeholder="Su apellido..." />
-<h3
-  *ngIf="
-    nombre != '' && apellido != '' && nombre.length >= 4 && apellido.length >= 4
-  "
->
-  Su nombre es: {{ nombre + " " + apellido }}
-</h3>
+
+
+<div [ngSwitch]="nombre">
+  <p *ngSwitchCase="'nicolas'">Este es Nicolas</p>
+  <p *ngSwitchCase="'julian'">Este es Julian</p>
+  <p *ngSwitchCase="'camilo'">Este es Camilo</p>
+  <p *ngSwitchDefault>No hay usuarios con ese nombre</p>
+</div>
 
 <button (click)="addItem()">Add item</button>
+<br />  
+<br>
 <input type="checkbox" #checkbox1 [checked]="false" />
 
 <div style="padding-left: 20px">
@@ -28,7 +33,9 @@
   </li>
 </div>
 
-<!-- <div
+
+
+<div
   *ngFor="let product of products"
   style="
     display: flex;
@@ -39,34 +46,6 @@
     margin: 10px;
   "
 >
-  <h3
-    style="
-      width: 100%;
-      background-color: black;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin: 0;
-    "
-  >
-    {{ product.title }}
-  </h3>
-  <img
-    src="../{{ product.image }}"
-    alt="{{ product.description }}"
-    style="width: 60%; cursor: pointer"
-    title="{{ product.description }}"
-  />
-  <h4
-    style="
-      font-size: 30px;
-      padding: 0;
-      color: olivedrab;
-      background-color: black;
-      padding: 10px;
-      border-radius: 7.5px;
-    "
-  >
-    $ {{ product.price }}
-  </h4>
-</div> -->
+<app-product (productCliked)="clickProduct($event)" [product]="product"></app-product>
+  
+</div>

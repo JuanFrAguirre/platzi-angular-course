@@ -1,0 +1,37 @@
+<h3
+    style="
+      width: 100%;
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin: 0;
+    "
+  >
+    {{ product.title }}
+  </h3>
+  <div
+  style="width: 100%;
+  display: flex;
+  justify-content: center;">
+    <img
+      src="../{{ product.image }}"
+      alt="{{ product.description }}"
+      style="width: 60%; cursor: pointer; text-align: center;"
+      title="{{ product.description }}"
+    />
+  </div>
+  <h4
+    style="
+      font-size: 30px;
+      padding: 0;
+      color: olivedrab;
+      background-color: black;
+      padding: 10px;
+      border-radius: 7.5px;
+      text-align: center;
+    "
+  >
+    $ {{ product.price }}
+  </h4>
+  <button (click)="addCart(product)">Agregar al carrito</button>
